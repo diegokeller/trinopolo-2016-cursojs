@@ -1,0 +1,37 @@
+* {
+  font-family: Arial;
+}
+
+h1 {
+  margin: 20px 0px;
+  border: 1px solid red;
+  padding: 15px;
+}
+
+#menu {
+  width: 20%;
+  float: left;
+}
+
+#conteudo{
+  width: 80%;
+  float: right;
+}
+
+.subtitulo {
+  border-bottom: 1px solid black;
+  font-size: 16px;
+  margin: 0px;
+}
+
+.verde {
+  color: lightgreen;
+}
+
+#menu, p {
+  font-size: 12px;
+}
+
+body div#menu ul li.destaque {
+  color: yellow;
+}
