@@ -1,0 +1,30 @@
+Exercício 1
+-----------------------
+Desenvolva um programa que mostra na console (print) os número de 1 até 100. Mas se o número for múltiplo de 3, mostre a mensagem “Fiz” ao invés do número. Se o número for múltiplo de 5, mostre a mensagem “Buzz” ao invés do número. Se for múltiplo de 3 e 5 ao mesmo tempo, mostre a mensagem “FizzBuzz”.
+
+Exercício 2
+-----------------------
+Desenvolva uma programa que seja capaz de calcular o fatorial de um número. O número pode ser informado de forma fixa dentro do programa através de uma variável, não é necessário ler o número da console. O fatorial de um número é calculado como esse exemplo:
+5! = 5 * 4 * 3 * 2 * 1 = 120
+
+Exercício 3
+-----------------------
+Desenvolva um programa que seja capaz de calcular e mostrar na tela os número da série de Fibonacci, até o 100º elemento. A série de Fibonacci é calculada começando-se com os números 1 e 1,  e o próximo número da série é calculado somando-se os dois números anteriores, conforme esse exemplo:
+1, 1, 2, 3, 5, 8, 13, 21
+Explicando o exemplo anterior:
+1, 1, 2 (1+1), 3 (1+2), 5(2+3), 8(3+5), 13(5+8), 21(8+13).
+
+Exercício 4
+-----------------------
+Desenvolva um programa em Java que imprima na console a tabuada completa, do 1 até o 10. Mostrando para cada número uma saída semelhante a essa:
+1 * 1 = 1
+1 * 2 = 2
+1 * 3 = 3
+1 * 4 = 4
+1 * 5 = 5
+1 * 6 = 6
+1 * 7 = 7
+1 * 8 = 8
+1 * 9 = 9
+1 * 10 = 10
+Você deve mostrar uma saída como essa para cada uma das tabuadas, do 1 até o 10.

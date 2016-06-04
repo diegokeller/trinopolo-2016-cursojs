@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tabuada</title>
+    <!-- Copiar do site http://getbootstrap.com/getting-started/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Escrever no documento -->
+    <script>
+      document.write('1 * 1 = 1');
+    </script>
+
+    <!-- Adicionar conteudo em uma DIV -->
+    <div id="tabuada">
+
+    </div>
+
+    <script>
+      // Pega o div da tabuada
+      var div = document.getElementById('tabuada');
+
+      // Primeiro laço
+      for (var i = 1; i <= 10; i++) {
+
+        // Título
+        var s = '';
+        s += '<div class="col-md-2">';
+        s += '<h1>Tabuada do ' + i + '</h1>';
+
+        // Segundo laço
+        for (var j = 1; j <= 10; j++) {
+          // Multiplicação
+          s += i + ' * ' + j + ' = ' + (i * j) + '<br>';
+        }
+
+        // Linha divisória
+        s += '</div>';
+        div.innerHTML += s;
+
+      }
+    </script>
+  </body>
+</html>
