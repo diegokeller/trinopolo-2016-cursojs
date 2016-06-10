@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Arrays e Objetos</title>
+    <script type="text/javascript">
+
+      // Declarar um vetor
+      var nomes = ["Maria", "João", "Carlos", "Joana"];
+
+      // Declarar um objeto
+      var pessoa = {
+        nome: '',
+        anoNascimento: 0,
+        sexo: '',
+        // Objetos podem ter funções
+        getIdade: function(){
+          return new Date().getFullYear() - this.anoNascimento;
+        }
+      };
+
+      // Cópia de objetos
+      var diego = Object.assign({}, maria);
+      diego.nome = 'Diego';
+      pessoa.nome = 'Maria';
+      console.log('TESTE 1 ' + diego.nome);
+      console.log('TESTE 2 ' + pessoa.nome);
+
+      console.log(nomes);
+      console.log(pessoa.cidade);
+      console.log(pessoa.getIdade());
+
+
+
+      // ----------------------------------------
+
+      // Outra forma de declarar objetos
+      function Pessoa(nome, anoNascimento){
+        this.nome = nome;
+        this.anoNascimento = anoNascimento;
+        this.getIdade = function(){
+          return new Date().getFullYear() - this.anoNascimento;
+        }
+      };
+
+      var maria = new Pessoa('Maria', 1976);
+      console.log(maria.nome);
+      console.log('TESTE 2 '  + maria.getIdade());
+
+      // Adicionar métodos em uma classe depois de declarada
+      Pessoa.prototype.getNome = function(){
+        return this.nome;
+      }
+
+      console.log(maria.getNome());
+
+      String.prototype.replaceAll = function(){
+
+      };
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

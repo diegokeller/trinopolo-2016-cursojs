@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Numeros</title>
+  </head>
+  <body>
+
+    <input type="text" name="idade" id="idade" value="18">
+    <input type="number" name="preco" id="preco" value="12.34">
+    <script type="text/javascript">
+      // Converter string para número
+      var idade = parseInt(document.getElementById('idade').value);
+      if(idade >= 18){
+        console.log('Maior de idade');
+      } else {
+        console.log('Menor de idade');
+      }
+      // String para ponto flutuante
+      var valor = parseFloat('123.4');
+      console.log(valor + 100);
+      
+    </script>
+  </body>
+</html>

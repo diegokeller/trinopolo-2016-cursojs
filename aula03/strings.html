@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Strings</title>
+    <script type="text/javascript">
+
+      var cidade = "Caxias do Sul";
+
+      // Obter o tamanho / quantidade de caracteres
+      // 13 caracteres
+      console.log(cidade.length);
+
+      // Consultar o caracter em uma determinada posição
+      // As posições começam em zero.
+      console.log(cidade.charAt(2));
+
+      // Consultar a posição de um caracter
+      // retorna -1 quando não encontra
+      console.log(cidade.indexOf('a')); // Primeira posição
+      console.log(cidade.lastIndexOf('a')); // Última posição
+
+      // Substituir uma parte da String
+      cidade = cidade.replace('Sul', 'Norte');
+      console.log(cidade);
+
+      // Pesquisar a posição de uma parte da String
+      var posicao = cidade.search('do');
+      console.log(posicao);
+
+      // Dividir uma string por um caracter
+      var partes = cidade.split(' '); // Espaço
+      console.log(partes);
+
+      // Extrair uma parte de uma String
+      // Com base no início e quantidade de caracter
+      var parte = cidade.substr(2, 5);
+      console.log(parte); // xias
+
+      // Com base no início e fim
+      var parte2 = cidade.substring(2, 5);
+      console.log(parte2); // xia
+
+      // Todas para maiúsculas ou minúsculas
+      console.log(cidade.toUpperCase());
+      console.log(cidade.toLowerCase());
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

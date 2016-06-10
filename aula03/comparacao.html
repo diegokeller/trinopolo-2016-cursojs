@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Comparação</title>
+    <script type="text/javascript">
+
+      // Comparação de String
+      var nome = "João";
+      var nome2 = "João";
+
+      console.log(nome == nome2);
+
+      // Nesse caso a comparação funciona, pois as
+      // variáveis não são objetos, são String
+      console.log(typeof nome);
+
+      //-----------------------------------------
+
+      // Comparação de objetos
+      // Nesse caso não funciona, pois é do tipo Object
+      var nome3 = new String("Maria");
+      var nome4 = new String("Maria");
+
+      console.log(nome3 == nome4);
+      console.log(typeof nome3);
+
+      // ----------------------------------------
+
+      // A menos que você compare pedando o valor dos objetos
+      console.log(nome3.valueOf() == nome4.valueOf());
+
+      // ----------------------------------------
+
+      var idade = new Number(18);
+      var sIdade = new String('18');
+
+      console.log('TESTE');
+      console.log(idade.toString() == sIdade.toString());
+
+      console.log("Teste 2");
+      console.log(idade.valueOf() == sIdade.valueOf());
+
+      var pessoa = {nome: 'Carlos'};
+      var pessoa2 = {nome: 'Carlos'};
+      console.log('Teste 4');
+      console.log(pessoa == pessoa2);
+      console.log(typeof pessoa);
+
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

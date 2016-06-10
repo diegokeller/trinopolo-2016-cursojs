@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Teste 01 OO</title>
+    <script type="text/javascript">
+
+      // http://www.phpied.com/3-ways-to-define-a-javascript-class/
+
+      var pessoa = {
+        nome: 'João',
+        sobrenome: 'Silva',
+        getNomeCompleto: function(){
+          return this.nome + ' ' + this.sobrenome;
+        }
+      }
+
+      // alert(pessoa.getNomeCompleto());
+
+      function Carro(modelo, ano){
+        this.modelo = modelo;
+        this.ano = ano;
+        this.getInfo = function(){
+          return this.modelo + ' ' + this.ano;
+        }
+      }
+
+      var uno = new Carro('Fiat Uno', 2001);
+      alert(uno.getInfo());
+
+      var gol = new Carro('VW Gol', 2005);
+      alert(gol.getInfo());
+
+      Carro.prototype.getIdade = function(anoAtual){
+        return anoAtual - this.ano;
+      }
+
+      alert(uno.getIdade(2016));
+      alert(gol.getIdade(2016));
+    </script>
+  </head>
+  <body>
+    <div id="banner">
+
+    </div>
+  </body>
+</html>

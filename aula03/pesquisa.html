@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pesquisa</title>
+    <script type="text/javascript">
+      function pesquisar(){
+        var divTexto = document.getElementById('texto');
+        var texto = divTexto.innerHTML;
+        console.log(texto);
+        var termo = document.getElementById('termo').value;
+        console.log(termo);
+
+        // Pesquisa pelo termo no texto
+        if(texto.search(termo) < 0){
+          alert('Não encontrado.');
+        }
+
+        // Substitui pelo destaque
+        texto = texto.replace(termo, '<strong>' + termo + '</strong>');
+
+        divTexto.innerHTML = texto;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Pesquisar</h1>
+    <input type="text" id="termo" value="">
+    <input type="button" name="ok" value="OK" onclick="pesquisar()">
+    <div id="texto" style="border: 1px solid blue; width: 400px;">
+      Amargo doce que sorvo num beijo de lábios de prata.
+      Tens o sorriso da mata molhada pelo sereno.
+      E a cuia seio moreno que passa de mão em mão.
+      Traduz no meu chimarrão em sua simplicidade a velha
+      hospitalidade da gente do meu rincão.
+    </div>
+  </body>
+</html>
