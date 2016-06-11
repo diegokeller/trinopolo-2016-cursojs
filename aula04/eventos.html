@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Eventos</title>
+    <script type="text/javascript">
+      function paginaCarregou(){
+        alert('Bem vindo ao sistema!');
+      }
+      function destacar(elemento, destacar){
+        if(destacar){
+          elemento.style.backgroundColor = 'red';
+          elemento.style.color = 'white';
+        } else {
+          elemento.style.backgroundColor = '';
+          elemento.style.color = '';
+        }
+      }
+    </script>
+  </head>
+  <body onload="paginaCarregou()">
+    <h1 onmouseenter="destacar(this, true)"
+        onmouseleave="destacar(this, false)">Bem vindo!</h1>
+    <a href="http://www.google.com.br" onclick="adeus()">Google</a>
+    <form method="post" onsubmit="validar()">
+      <input onkeyup="maiusculas(this)" type="text" id="nome" value="">
+      <input type="submit" value="Salvar">
+    </form>
+  </body>
+</html>
