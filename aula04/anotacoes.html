@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Anotações</title>
+    <!--Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      var contador = null;
+      function salvar(){
+        if(contador !== null){
+          clearTimeout(contador);
+        }
+        contador = setTimeout(salvarEmCookie, 1500);
+      }
+      function salvarEmCookie(){
+        var anotacoes = document.getElementById('anotacoes').value;
+        document.cookie = 'anotacoes=' + anotacoes.split('\n').join('<br>');
+        document.getElementById('mensagem').style.display = 'block';
+      }
+
+      function carregar(){
+        var cookies = document.cookie;
+        console.log(document.cookie);
+        if(cookies.trim().length === 0){
+          return;
+        }
+        cookies = cookies.split(';');
+        console.log(cookies);
+        cookies = cookies[0];
+        var anotacoes = cookies.split('=')[1];
+        anotacoes = anotacoes.split('<br>').join('\n');
+        document.getElementById('anotacoes').value = anotacoes;
+      }
+    </script>
+  </head>
+  <body onload="carregar()">
+    <form method="post">
+      <h1>Bloco de Anotações</h1>
+      <div class="form-group">
+        <label for="anotacoes">Anotações</label>
+        <textarea onkeyup="salvar()" id="anotacoes"
+          class="form-control" rows="8" cols="40"></textarea>
+      </div>
+      <h2 id="mensagem" class="bg-success" style="padding: 10px; display: none;">
+        Salvo com sucesso
+      </h2>
+    </form>
+  </body>
+</html>

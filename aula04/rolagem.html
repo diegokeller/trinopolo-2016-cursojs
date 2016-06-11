@@ -4,18 +4,32 @@
     <meta charset="utf-8">
     <title>Rolagem</title>
     <style media="screen">
-      .noticia {
+      #noticia {
         border: 1px solid blue;
         width: 200px;
         height: 200px;
         overflow-y: scroll;
       }
     </style>
+    <script type="text/javascript">
+      var timer = null;
+      function rolar(){
+        document.getElementById('noticia').scrollTop += 5;
+      }
+      function iniciar(){
+        timer = setInterval(rolar, 100);
+      }
+      function parar(){
+        if(timer !== null){
+          clearInterval(timer);
+        }
+      }
+    </script>
   </head>
   <body>
     <input type="button" onclick="iniciar()" value="Iniciar">
-    <input type="button" onclick="iniciar()" value="Parar">
-    <div class="noticia">
+    <input type="button" onclick="parar()" value="Parar">
+    <div id="noticia">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
