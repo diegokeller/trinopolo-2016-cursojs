@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fila de Atendimento</title>
+    <!--Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Fila de Atendimento</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Adicionar</h2>
+        <form method="post" id="formulario">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input class="form-control" type="text"
+              name="nome" id="nome" value="">
+          </div>
+          <input type="button" value="Adicionar"
+            class="btn btn-primary" onclick="adicionar()">
+        </form>
+      </div>
+      <div class="col-md-8">
+        <h2>Fila de Atendimento</h2>
+        <ul id="fila">
+        </ul>
+        <input type="button" class="btn btn-success"
+          value="Próximo" onclick="proximo()">
+      </div>
+    </div>
+  </body>
+</html>

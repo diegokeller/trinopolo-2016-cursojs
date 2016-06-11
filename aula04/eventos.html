@@ -16,14 +16,32 @@
           elemento.style.color = '';
         }
       }
+      function adeus(){
+        alert('Obrigado por nos visitar!');
+      }
+      function maiusculas(e, campo){
+        if(e.keyCode >= 37 && e.keyCode <= 40){
+          return;
+        }
+        campo.value = campo.value.toUpperCase();
+      }
+      function validar(){
+        var nome = document.getElementById('nome');
+        if(nome.value.trim().length === 0){
+          alert('Informe o seu nome');
+          nome.style.border = '1px solid red';
+          nome.focus();
+          return false;
+        }
+      }
     </script>
   </head>
   <body onload="paginaCarregou()">
     <h1 onmouseenter="destacar(this, true)"
         onmouseleave="destacar(this, false)">Bem vindo!</h1>
     <a href="http://www.google.com.br" onclick="adeus()">Google</a>
-    <form method="post" onsubmit="validar()">
-      <input onkeyup="maiusculas(this)" type="text" id="nome" value="">
+    <form method="post" onsubmit="return validar()">
+      <input onkeyup="maiusculas(event, this)" type="text" id="nome" value="">
       <input type="submit" value="Salvar">
     </form>
   </body>
