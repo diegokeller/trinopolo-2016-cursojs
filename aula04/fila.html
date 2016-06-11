@@ -5,16 +5,62 @@
     <title>Fila de Atendimento</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      // Array para fila de atendimento
+      var fila = ['Maria', 'Carlos', 'João'];
+
+      // Mostra a fila
+      function atualizar(){
+        var ulFila = document.getElementById('fila');
+        var html = '';
+        for (nome of fila) {
+          html += '<li>' + nome;
+        }
+        ulFila.innerHTML = html;
+      }
+
+      // Adicionar um nome na fila
+      function adicionar(){
+        var nome = document.getElementById('nome');
+        if(nome.value.trim().length === 0){
+          alert('Informe o nome:');
+          nome.style.backgroundColor = 'yellow';
+          nome.focus();
+          return;
+        }
+        nome.style.backgroundColor = '';
+        fila.push(nome.value);
+        nome.value = '';
+        atualizar();
+      }
+
+      function proximo(){
+        if(fila.length === 0){
+          alert('Fila vazia!');
+          return;
+        }
+        var proximo = fila.shift();
+        alert('Próximo da fila: ' + proximo);
+        atualizar();
+      }
+
+      function testar(event){
+        if(event.keyCode == 13){
+          adicionar();
+          document.getElementById('nome').focus();
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body onload="atualizar()">
     <h1>Fila de Atendimento</h1>
     <div class="row">
       <div class="col-md-4">
         <h2>Adicionar</h2>
-        <form method="post" id="formulario">
+        <form method="post" id="formulario" onsubmit="return false">
           <div class="form-group">
             <label for="nome">Nome:</label>
-            <input class="form-control" type="text"
+            <input onkeypress="testar(event)" class="form-control" type="text"
               name="nome" id="nome" value="">
           </div>
           <input type="button" value="Adicionar"
@@ -24,6 +70,7 @@
       <div class="col-md-8">
         <h2>Fila de Atendimento</h2>
         <ul id="fila">
+
         </ul>
         <input type="button" class="btn btn-success"
           value="Próximo" onclick="proximo()">

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Confirmação</title>
+    <script type="text/javascript">
+      function excluir(){
+        // Solicita confirmação
+        var confirma = confirm('Tem certeza que quer excluir?');
+        if(confirma){
+          // Solicita digitação
+          var texto = prompt('Digite EXCLUIR para confirmar:');
+          if(texto === 'EXCLUIR'){
+            alert('Exclusão realizada com sucesso!');
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" onclick="excluir()" value="Excluir">
+  </body>
+</html>
