@@ -1,0 +1,20 @@
+<div class="row" ng-app="acesso" ng-controller="loginController as loginCtrl">
+    <div class="col-lg-4 col-centered">
+      <h3>Login</h3>
+      <div ng-show="loginCtrl.mensagem.length > 0" class="alert alert-{{loginCtrl.tipoMensagem}}">
+        {{loginCtrl.mensagem}}
+      </div>
+      <form>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="email" placeholder="E-mail" ng-model="loginCtrl.email">
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" class="form-control" id="senha" placeholder="Senha" ng-model="loginCtrl.senha">
+        </div>
+        <button type="button" class="btn btn-success" ng-click="loginCtrl.entrar()">ENTRAR</button>
+        <button type="button" class="btn btn-primary" ng-click="loginCtrl.recuperarSenha()">Esqueci minha senha</button>
+      </form>
+    </div>
+</div>
