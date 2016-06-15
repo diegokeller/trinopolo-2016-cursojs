@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Java OO</title>
+    <script type="text/javascript">
+
+      var rafa = (
+        function(){
+
+        };
+      )();
+
+
+
+      var pessoa = {
+        nome: 'João',
+        idade: 18,
+        ativo: true,
+        getAnoNascimento: function(){
+          return 2016 - this.idade;
+        },
+        endereco: {
+          cidade: 'Caxias'
+        }
+      };
+      console.log(pessoa.getAnoNascimento());
+      console.log(pessoa.endereco.cidade);
+
+      // Não é JSON
+      // Mais ou menos uma classe
+      function Carro(marca, modelo, ano){
+        this.marca = marca;
+        this.modelo = modelo;
+        this.ano = ano;
+        this.getIdade = function(){
+          return 2016 - this.ano;
+        }
+      };
+
+      var gol = new Carro('VW', 'Gol', 2001);
+      console.log(typeof gol);
+      console.log(gol);
+      console.log(gol.getIdade());
+
+      Carro.prototype.verModelo = function () {
+        return this.modelo;
+      };
+
+      String.prototype.obaoba = function(){
+        alert('Oba Oba!!!');
+      };
+
+      console.log(String.prototype);
+
+      var nome = 'Teste';
+      nome.obaoba();
+
+      console.log(gol.verModelo());
+
+      var produto = {};
+      produto.nome = 'Abacaxi';
+      console.log(produto);
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
