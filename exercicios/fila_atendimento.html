@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fila de Atendimento</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      var fila = [];
+      function adicionar(){
+        var nome = document.getElementById('nome').value;
+        fila.push(nome);
+        document.getElementById('formulario').reset();
+        atualizarLista();
+      }
+
+      function proximo(){
+        if(fila.length === 0){
+          alert('Fila está vazia!');
+          return;
+        }
+        var nome = fila.shift();
+        alert("Próximo: " + nome);
+        atualizarLista();
+      }
+
+      function atualizarLista(){
+        var divFila = document.getElementById('fila');
+        divFila.innerHTML = '';
+        var conteudo = '';
+        for (nome of fila) {
+          conteudo += '<li>' + nome;
+        }
+        divFila.innerHTML = conteudo;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Fila de Atendimento</h1>
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Adicionar</h2>
+        <form method="post" id="formulario">
+          <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input class="form-control" type="text" name="nome" id="nome" value="">
+          </div>
+          <input type="button" value="Adicionar" class="btn btn-primary" onclick="adicionar()">
+        </form>
+      </div>
+      <div class="col-md-8">
+        <h2>Fila de Atendimento</h2>
+        <ul id="fila">
+        </ul>
+        <input type="button" class="btn btn-success" value="Próximo" onclick="proximo()">
+      </div>
+    </div>
+  </body>
+</html>

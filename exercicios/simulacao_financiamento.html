@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simulação de financiamento</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      function calcular(){
+        var valor = document.getElementById('valor').value;
+        if(valor.trim().length == 0){
+          return;
+        }
+        valor = parseFloat(valor);
+
+        var taxa = document.getElementById('taxa').value;
+        if(taxa.trim().length == 0){
+          return;
+        }
+        taxa = parseFloat(taxa);
+
+        var prazo = document.getElementById('prazo').value;
+        if(prazo.trim().length == 0){
+          return;
+        }
+        prazo = parseInt(prazo);
+
+        var valorFinal = valor * (Math.pow(1+taxa, prazo));
+
+        document.getElementById('valor-final').innerHTML = valorFinal.toFixed(2).toString().replace('.', ',');
+      }
+
+      function darDestaque(elemento){
+        elemento.style.border = '1px solid red';
+        elemento.style.backgroundColor = 'yellow';
+      }
+      function tirarDestaque(elemento){
+        elemento.style.border = '';
+        elemento.style.backgroundColor = '';
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Simulação de financiamento</h1>
+    <form method="post" id="formulario">
+      <div class="form-group">
+        <label for="valor">Valor:</label>
+        <input onfocus="darDestaque(this)" onblur="tirarDestaque(this)" onkeyup="calcular()" type="text" id="valor" value="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="taxa">Taxa de Juros:</label>
+        <input onfocus="darDestaque(this)" onblur="tirarDestaque(this)" onkeyup="calcular()" type="text" id="taxa" value="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="prazo">Prazo:</label>
+        <input onfocus="darDestaque(this)" onblur="tirarDestaque(this)" onkeyup="calcular()" type="text" id="prazo" value="" class="form-control">
+      </div>
+    </form>
+    <h2>Valor final: R$ <span id="valor-final"></span></h2>
+  </body>
+</html>

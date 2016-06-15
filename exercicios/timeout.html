@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Timeout</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      var timer = null;
+      function aguardar(){
+        if(timer !== null){
+          window.clearInterval(timer);
+        }
+        timer = window.setTimeout(function(){
+
+          document.getElementById('aguarde').style.display = 'block';
+          window.setTimeout(function(){
+            document.getElementById('aguarde').className = 'bg-danger';
+            document.getElementById('aguarde').innerHTML = 'Nenhum resultado encontrado';
+          }, 1000);
+
+        }, 1500);
+      }
+    </script>
+  </head>
+  <body>
+    <form method="post">
+      <div class="form-group">
+        <label for="pesquisa">Pesquisar:</label>
+        <input onkeypress="aguardar()" type="text" class="form-control" value="">
+      </div>
+      <p id="aguarde" class="bg-warning" style="margin: 10px; padding: 10px; display: none;">
+        Aguarde! Carregando.....
+      </p>
+    </form>
+  </body>
+</html>

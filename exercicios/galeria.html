@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Galeria de Fotos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      var imagens = [
+        'https://www.cdn.renault.com/content/dam/Renault/BR/personal-cars/logan/l52-logan/l52-phase1/packshot/renault-logan-lateral.jpg.ximg.l_full_m.smart.jpg',
+        'http://www.blogwebdesignmicrocamp.com.br/wp-content/uploads/2015/09/carro.png',
+        'http://www.vbtuning.com.br/images/carro.png',
+        'http://www.rentcars.com.br/imagens/modules/localidade/cidades/carro-localidade-personalizada.png',
+        'http://www.ciamotorssl.com.br/images/carro.png',
+        'https://i.ytimg.com/vi/yAizGlTymFg/maxresdefault.jpg'
+      ];
+      function montarGaleria(){
+        var miniaturas = document.getElementById('miniaturas');
+        html = '';
+        for (imagem of imagens) {
+          html += '<div class="col-md-6">';
+          html += '<img onmouseout="limpar(this)" onmouseover="ampliar(this)" src="' + imagem + '" style="width: 100px">';
+          html += '</div>';
+        }
+        miniaturas.innerHTML = html;
+      }
+      function ampliar(imagem){
+        var ampliada = imagem.outerHTML.replace('width: 100px', 'width: 400px');
+        imagem.style.border = '1px solid red';
+        document.getElementById('grande').innerHTML = ampliada;
+      }
+      function limpar(imagem){
+        imagem.style.border = '';
+        document.getElementById('grande').innerHTML = '';
+      }
+    </script>
+  </head>
+  <body onload="montarGaleria()">
+    <div class="row">
+      <div class="col-md-4">
+        <div id="miniaturas" class="row">
+
+        </div>
+      </div>
+      <div id="grande" class="col-md-8">
+
+      </div>
+    </div>
+
+  </body>
+</html>

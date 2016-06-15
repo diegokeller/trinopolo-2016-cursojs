@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Intervalo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      var intervalo;
+      var intervalo2;
+      function iniciar(){
+
+        intervalo = window.setInterval(function(){
+         document.getElementById('data').innerHTML = new Date().toLocaleString();
+        }, 1000);
+
+        intervalo2 = window.setInterval(function(){
+         document.getElementById('texto').scrollTop += 5;
+        }, 100);
+
+      }
+      function parar(){
+        window.clearInterval(intervalo);
+        window.clearInterval(intervalo2);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Data e Hora</h1>
+    <h2 id="data"></h2>
+    <input type="button" onclick="iniciar()" value="Iniciar">
+    <input type="button" onclick="parar()" value="Parar">
+    <div id="texto" style="border: 1px solid red; width: 150px; height: 150px; overflow-y: scroll;">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Cookies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script type="text/javascript">
+      function salvar(){
+        var anotacoes = document.getElementById('anotacoes').value;
+        anotacoes = anotacoes.split('\n').join('<br>');
+        document.cookie = 'anotacoes=' + anotacoes;
+      }
+      function carregar(){
+        var cookies = document.cookie;
+        if(cookies.trim().length === 0){
+          return;
+        }
+        cookies = cookies.split(';');
+        cookies = cookies[0];
+        var anotacoes = cookies.split('=')[1];
+        anotacoes = anotacoes.split('<br>').join('\n');
+        document.getElementById('anotacoes').value = anotacoes;
+      }
+    </script>
+  </head>
+  <body onload="carregar()">
+    <form method="post">
+      <div class="form-group">
+        <label for="anotacoes">Anotações</label>
+        <textarea onkeyup="salvar()" id="anotacoes" class="form-control" rows="8" cols="40"></textarea>
+      </div>
+    </form>
+  </body>
+</html>
