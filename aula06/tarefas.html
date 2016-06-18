@@ -44,6 +44,7 @@
             '<li data-prioridade="' + prioridade + '">'
             + '<input type="checkbox">'
             + tarefa + '</li>');
+          programarEventos();
           $('#tarefa').val('');
           $('input[name=prioridade]:checked').prop('checked', false);
           $('#tarefa').focus();
@@ -69,22 +70,33 @@
           });
         });
 
-        // Destaca a tarefa pela prioridade
-        $('#lista-tarefas li').mouseenter(function(){
-          // Obtém a prioridade da tarefa
-          var prioridade = parseInt($(this).data('prioridade'));
+        function programarEventos(){
 
-          // Testa a prioridade
-          if(prioridade === 1){
-            $(this).addClass('bg-danger');
-          }
-          if(prioridade === 2){
-            $(this).addClass('bg-warning');
-          }
-          if(prioridade === 3){
-            $(this).addClass('bg-primary');
-          }
-        });
+          // Destaca a tarefa pela prioridade
+          $('#lista-tarefas li').mouseenter(function(){
+            // Obtém a prioridade da tarefa
+            var prioridade = parseInt($(this).data('prioridade'));
+
+            // Testa a prioridade
+            if(prioridade === 1){
+              $(this).addClass('bg-danger');
+            }
+            if(prioridade === 2){
+              $(this).addClass('bg-warning');
+            }
+            if(prioridade === 3){
+              $(this).addClass('bg-primary');
+            }
+          });
+
+          // Destaca a tarefa pela prioridade
+          $('#lista-tarefas li').mouseleave(function(){
+            $(this).attr('class', '');
+          });
+
+        }
+
+        programarEventos();
       });
     </script>
   </body>
