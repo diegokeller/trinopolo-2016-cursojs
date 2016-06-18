@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tarefas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Tarefas</h1>
+    <h2>Nova Tarefa</h2>
+    <div>
+      <input type="text" id="tarefa">
+      <input type="radio" name="prioridade" value="1">1
+      <input type="radio" name="prioridade" value="2">2
+      <input type="radio" name="prioridade" value="3">3
+      <input type="button" id="adicionar" value="Adicionar" class="btn btn-primary">
+    </div>
+    <h2>Lista de Tarefas</h2>
+    <ul id="lista-tarefas">
+      <li><input type="checkbox" value="">Tarefa 1</li>
+      <li><input type="checkbox" value="">Tarefa 2</li>
+    </ul>
+    <input type="button" id="concluida" class="btn btn-success" value="Concluída">
+    <input type="button" id="excluir" class="btn btn-danger" value="Excluir">
+    <script type="text/javascript">
+      // Aguarda carregamento da página
+      $(document).ready(function(){
+        // Botão Adicionar
+        $('#adicionar').click(function(){
+          var tarefa = $('#tarefa').val();
+          var prioridade = $('input[type=radio]:checked').val();
+          console.log(tarefa);
+          console.log(prioridade);
+        });
+      });
+    </script>
+  </body>
+</html>
