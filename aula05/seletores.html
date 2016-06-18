@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Seletores</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>Bem Vindo</h1>
+    <p>
+      Primeiro parágrafo.
+    </p>
+    <p class="vermelho">
+      Segundo parágrafo.
+    </p>
+    <input type="text" id="email">
+    <a href="http://www.terra.com.br" class="vermelho">
+      Terra
+    </a>
+    <table class="zebrado">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>E-mail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>João</td><td>joao@email.com</td></tr>
+        <tr><td>Maria</td><td>maria@email.com</td></tr>
+        <tr><td>Carlos</td><td>carlos@email.com</td></tr>
+        <tr><td>Carla</td><td>carla@email.com</td></tr>
+      </tbody>
+    </table>
+    <script type="text/javascript">
+      // Pelo ID
+      $('#email').val('teste@email.com');
+
+      // Pelo nome da TAG HTML
+      $('p').css('color', 'blue');
+
+      // Pelo nome da classe css
+      $('.vermelho').css('color', 'red');
+
+      console.log($('*').length);
+
+      // Combinando TAG e CLASS
+      $('p.vermelho').css('text-transform', 'uppercase');
+
+      // Selecionando por um atributo qualquer
+      $('[type=text]').val('TEXTO');
+
+      $('table.zebrado thead tr th')
+        .css('color', 'white')
+        .css('background-color', 'red');
+      $('table.zebrado tbody tr:even').css('background-color', 'silver');
+
+      // Adicionando eventos
+      $('table.zebrado tbody tr').mouseenter(function(){
+        $(this).css('background-color', 'blue');
+      });
+      $('table.zebrado tbody tr').mouseleave(function(){
+        $(this).css('background-color', '');
+      });
+    </script>
+  </body>
+</html>

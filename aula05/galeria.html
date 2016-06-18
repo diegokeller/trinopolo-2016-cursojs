@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Galeria</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <style media="screen">
+      .selecionado {
+        border: 4px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-lg-6 miniaturas">
+        <h1>Miniaturas</h1>
+        <div class="row">
+          <div class="col-lg-2">
+            <img title="Uma linda imagem" src="http://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-natural-1024x679.jpg"/>
+          </div>
+          <div class="col-lg-2">
+            <img title="Paisagem 2" src="http://likefotos.com/wp-content/uploads/2015/01/paisagem-tailandia1.jpg"/>
+          </div>
+          <div class="col-lg-2">
+            <img  title="Por do sol" src="http://www.fotosefotos.com/admin/foto_img/foto_big/paisagem_americana_c16d9e5650bd3cfe745f50287f92b145_paisagins%20(1).jpg"/>
+          </div>
+          <div class="col-lg-2">
+            <img  title="Lugar paradisíaco" src="http://www.whatsappimagens.com/imagens/mensagens-paisagem-de-amor-1.jpg"/>
+          </div>
+        </div>
+        <p>
+          Você selecionou <span id="quantidade">0</span>
+          imagens.
+        </p>
+        <h2>Imagens Selecionadas</h2>
+        <ul id="lista-selecionadas">
+
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <h1>Imagem ampliada</h1>
+        <img src="" id="ampliada" />
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('div.miniaturas img')
+          .css('width', '100px')
+          .css('height', '80px')
+          .css('margin', '10px');
+
+        // Ao passar o mouse mostra ampliada
+        $('div.miniaturas img').mouseenter(function(){
+          var caminho = $(this).attr('src');
+          $('#ampliada').css('width', '600px');
+          $('#ampliada').attr('src', caminho);
+        });
+        // Ao tirar o mouse limpa a imagem ampliada
+        $('div.miniaturas img').mouseleave(function(){
+          $('#ampliada').attr('src', '');
+        });
+        // Destaca a imagem ao clicar
+        $('div.miniaturas img').click(function(){
+
+          // Troca a classe
+          $(this).toggleClass('selecionado');
+
+          // Atualiza o contador
+          var quantidade = $('img.selecionado').length;
+          $('#quantidade').text(quantidade);
+
+          // Atualiza a lista
+          var lista = $('#lista-selecionadas');
+          lista.empty();
+          var selecionadas = $('img.selecionado');
+          for (imagem of selecionadas) {
+            lista.append('<li>'
+              + $(imagem).attr('title')
+              + '</li>');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
