@@ -11,15 +11,25 @@
     <h2>Nova Tarefa</h2>
     <div>
       <input type="text" id="tarefa">
-      <input type="radio" name="prioridade" value="1">1
-      <input type="radio" name="prioridade" value="2">2
-      <input type="radio" name="prioridade" value="3">3
+      <label>
+        <input type="radio" name="prioridade" value="1">1
+      </label>
+      <label>
+        <input type="radio" name="prioridade" value="2">2
+      </label>
+      <label>
+        <input type="radio" name="prioridade" value="3">3
+      </label>
       <input type="button" id="adicionar" value="Adicionar" class="btn btn-primary">
     </div>
     <h2>Lista de Tarefas</h2>
     <ul id="lista-tarefas">
-      <li><input type="checkbox" value="">Tarefa 1</li>
-      <li><input type="checkbox" value="">Tarefa 2</li>
+      <li data-prioridade="1"><input type="checkbox" value="">Tarefa 1</li>
+      <li data-prioridade="1"><input type="checkbox" value="">Tarefa 2</li>
+      <li data-prioridade="2"><input type="checkbox" value="">Tarefa 2</li>
+      <li data-prioridade="3"><input type="checkbox" value="">Tarefa 2</li>
+      <li data-prioridade="3"><input type="checkbox" value="">Tarefa 2</li>
+      <li data-prioridade="2"><input type="checkbox" value="">Tarefa 2</li>
     </ul>
     <input type="button" id="concluida" class="btn btn-success" value="Concluída">
     <input type="button" id="excluir" class="btn btn-danger" value="Excluir">
@@ -29,9 +39,51 @@
         // Botão Adicionar
         $('#adicionar').click(function(){
           var tarefa = $('#tarefa').val();
-          var prioridade = $('input[type=radio]:checked').val();
-          console.log(tarefa);
-          console.log(prioridade);
+          var prioridade = $('input[name=prioridade]:checked').val();
+          $('#lista-tarefas').prepend(
+            '<li data-prioridade="' + prioridade + '">'
+            + '<input type="checkbox">'
+            + tarefa + '</li>');
+          $('#tarefa').val('');
+          $('input[name=prioridade]:checked').prop('checked', false);
+          $('#tarefa').focus();
+        });
+
+        // Botão excluir
+        $('#excluir').click(function(){
+          // Obtém as tarefas selecionadas
+          var selecionadas =
+            $('#lista-tarefas input[type=checkbox]:checked');
+          // Percorre a lista de tarefas (checkbox)
+          selecionadas.each(function(){
+            // Remove o elemento pai (li)
+            $(this).parent().remove();
+          });
+        });
+
+        // Botão concluída
+        $('#concluida').click(function(){
+          $('#lista-tarefas input[type=checkbox]:checked').each(function(){
+            $(this).parent().toggleClass('bg-success');
+            $(this).prop('checked', false);
+          });
+        });
+
+        // Destaca a tarefa pela prioridade
+        $('#lista-tarefas li').mouseenter(function(){
+          // Obtém a prioridade da tarefa
+          var prioridade = parseInt($(this).data('prioridade'));
+
+          // Testa a prioridade
+          if(prioridade === 1){
+            $(this).addClass('bg-danger');
+          }
+          if(prioridade === 2){
+            $(this).addClass('bg-warning');
+          }
+          if(prioridade === 3){
+            $(this).addClass('bg-primary');
+          }
         });
       });
     </script>
