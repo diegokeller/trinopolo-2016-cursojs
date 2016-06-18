@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="lojaApp">
+<html ng-app="lojaApp" ng-controller="lojaAppController as lojaAppCtrl">
 
 <head>
 
@@ -25,13 +25,21 @@
     <script src="recursos/lib/bootstrap/bootstrap.min.js"></script>
 
     <!--Angular JS-->
-    <script src="recursos/lib/angular/angular.min.js"></script>
+    <script src="recursos/lib/angular/angular.js"></script>
     <script src="recursos/lib/angular/angular-route.min.js"></script>
 
     <!--App-->
-    <script src="app/app.modulo.js"></script>
-    <script src="app/app.config.js"></script>
-    <script src="app/modulos/acesso/loginController.js"></script>
+    <script src="app/app-loja-modulos.js"></script>
+    <script src="app/app-loja-config.js"></script>
+
+    <script src="app/modulos/acesso/autenticacao-factory.js"></script>
+    <script src="app/modulos/acesso/acesso-api-factory.js"></script>
+    <script src="app/modulos/acesso/sair-directive.js"></script>
+    <script src="app/modulos/acesso/login-controller.js"></script>
+    <script src="app/modulos/acesso/senha-controller.js"></script>
+
+    <script src="app/app-loja-controller.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,14 +63,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Loja Virtual</a>
+                <span class="navbar-brand titulo-loja" href="">Loja Virtual</span>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#!/login">Login</a>
-                    </li>
+                <ul ng-show="lojaAppCtrl.autenticado" class="nav navbar-nav">
                     <li>
                         <a href="#!/home">Home</a>
                     </li>
@@ -74,6 +79,11 @@
                     </li>
                     <li>
                         <a href="#">Pedidos</a>
+                    </li>
+                    <li>
+                        <a href="#!/trocar-senha" >Trocar Senha</a>
+                    </li>
+                    <li sair>
                     </li>
                 </ul>
             </div>
