@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript">
+    var NomeClasse = (function(){
+
+        function Construtor(){
+
+             // Funções privadas
+             var naoEstaticoPrivado = function(){
+
+             }
+
+        };
+
+        // Estáticos privado
+        function estaticoPrivado(){
+            // Não acessa o this
+        }
+
+        // Estáticos públicos
+        Construtor.estaticoPublico = function(){
+
+        };
+
+        // Não estático e público
+        Construtor.prototype.naoEstaticoPublico = function(){
+            alert(2);
+        };
+
+        return Construtor;
+      })();
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

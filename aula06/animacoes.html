@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <title>Animações</title>
+  </head>
+  <body>
+    <h1>Animações</h1>
+    <div id="botoes">
+      <input type="button" value="Esconder"
+        class="btn btn-default" id="esconder">
+      <input type="button" value="Mostrar"
+        class="btn btn-default" id="mostrar">
+      <input type="button" value="Desvanecer"
+        class="btn btn-default" id="desvanecer">
+      <input type="button" value="Escorregar"
+        class="btn btn-default" id="escorregar">
+      <input type="button" value="Animar"
+        class="btn btn-default" id="animar">
+      <input type="button" value="Deslocar"
+        class="btn btn-default" id="deslocar">
+    </div>
+    <div id="conteudo">
+      <h2>Uma bela paisagem</h2>
+      <img style="width: 600px;" src="http://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-natural-1024x679.jpg"/>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#mostrar').click(function(){
+          $('#conteudo').show(2000, function(){
+            $('#conteudo').css('color', 'red');
+          });
+        });
+        $('#esconder').click(function(){
+          $('#conteudo').hide(200);
+        });
+        $('#desvanecer').click(function(){
+          $('#conteudo').fadeToggle(500);
+        });
+        $('#escorregar').click(function(){
+          $('#conteudo').slideToggle(500);
+        });
+        $('#animar').click(function(){
+          $('#conteudo img').css('position', 'absolute');
+          $('#conteudo img').animate({
+            width: '0px',
+            left: '400px'
+          }, 500, function(){
+            $('#conteudo img').attr('src', 'http://www.whatsappimagens.com/imagens/mensagens-paisagem-de-amor-1.jpg');
+          });
+          $('#conteudo img').animate({
+            width: '600px',
+            left: '0px'
+          }, 500);
+        });
+        $('#deslocar').click(function(){
+          $('#conteudo img').css('position', 'absolute');
+          $('#conteudo img').animate({
+            left: '+=100px'
+          }, 500);
+        });
+      });
+    </script>
+  </body>
+</html>
