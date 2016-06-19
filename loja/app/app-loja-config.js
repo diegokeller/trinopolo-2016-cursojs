@@ -18,6 +18,9 @@ angular
         }).
         when('/home', {
           templateUrl : "app/modulos/home/home.html"
+        }).
+        when('/produtos', {
+          templateUrl : "app/modulos/produto/produtos.html"
         });
     }
   ]);

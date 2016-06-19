@@ -1,0 +1,52 @@
+<div class="row" ng-controller="produtosController as produtosCtrl">
+
+    <div class="col-md-3">
+        <p class="lead">Filtre por categoria</p>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Category 1</a>
+            <a href="#" class="list-group-item">Category 2</a>
+            <a href="#" class="list-group-item">Category 3</a>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+
+        <div class="row carousel-holder">
+
+            <div class="col-md-12" banners>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-4 col-lg-4 col-md-4" ng-repeat="produto in produtosCtrl.produtos | orderBy: 'nome'">
+                <div class="thumbnail">
+                    <div class="text-center" style="padding: 5px;">
+                      <img src="{{produto.urlFoto}}" alt="" style="display: inline; width: 90%; margin: 0px auto;">
+                    </div>
+                    <div class="caption">
+                        <h5 class="pull-right" style="color: red;">{{produto.preco | currency}}</h5>
+                        <h5>
+                          <a href="#">{{produto.nome}}</a>
+                        </h5>
+                        <p>{{produto.descricao | limitTo: 100}}...</p>
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-right">15 reviews</p>
+                        <p>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

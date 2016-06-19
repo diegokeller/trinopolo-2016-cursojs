@@ -11,10 +11,10 @@ angular.module('lojaApp')
       self.autenticado = autenticado;
     });
 
-    if(Autenticacao.getAutenticado() === true){
-      $location.path( "/home" );
-    } else {
-      $location.path( "/login" );
-    }
+    // if(Autenticacao.getAutenticado() === true){
+    //   $location.path( "/home" );
+    // } else {
+    //   $location.path( "/login" );
+    // }
 
   }]);
