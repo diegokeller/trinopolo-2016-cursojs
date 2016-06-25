@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="servicos">
+  <head>
+    <meta charset="utf-8">
+    <title>Serviços</title>
+    <script src="angular.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="CalculadoraController as calcCtrl">
+
+  </body>
+  <script type="text/javascript">
+    angular
+      .module('servicos', [])
+      .factory('CalculadoraService', ['$http', function($http){
+
+        // Métodos públicos do serviço
+        var factory = {
+          somar: somar,
+          buscarNomeProduto: buscarNomeProduto
+        };
+        return factory;
+
+        // Métodos privados do serviço
+        function somar(n1, n2){
+          return n1 + n2;
+        }
+
+        function buscarNomeProduto(id, callback){
+          var url = 'http://lojawebrest-diegokeller.' +
+            'rhcloud.com/rest/produto/' + id;
+          var nome = '';
+          $http.get(url)
+            .then(function(resposta){
+              nome = resposta.data.nome;
+              callback(nome);
+            })
+            .catch(function(resposta){
+              console.log('Erro ao buscar produto.');
+              console.log(resposta);
+              callback('');
+            });
+        }
+
+      }])
+      .controller('CalculadoraController',
+        ['CalculadoraService', function(CalculadoraService){
+        var vm = this;
+        // alert(CalculadoraService.somar(1,5));
+        CalculadoraService.buscarNomeProduto(1, alert);
+      }]);
+  </script>
+</html>
