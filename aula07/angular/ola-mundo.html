@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular</title>
+    <script src="angular.js" charset="utf-8"></script>
+  </head>
+  <body ng-app="app" ng-controller="OlaController as olaCtrl">
+    <input type="text" name="nome" ng-model="olaCtrl.nome">
+    <span ng-bind="olaCtrl.nome" style="color: red;"></span>
+  </body>
+  <script type="text/javascript">
+    angular.module('app', []).controller('OlaController', [function(){
+      this.nome = 'FTEC';
+    }]);
+  </script>
+</html>

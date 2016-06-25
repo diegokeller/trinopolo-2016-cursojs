@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="loop">
+  <head>
+    <meta charset="utf-8">
+    <title>Loop</title>
+    <script src="angular.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="LoopController as loopCtrl">
+    <input type="teste" ng-model="nome">
+    <input type="teste" ng-model="nome">
+  </body>
+  <script type="text/javascript">
+
+    angular
+      .module('loop', [])
+      .controller('LoopController', ['$scope', function($scope){
+        var vm = this;
+        $scope.nome = 'Teste';
+        $scope.$watch('nome', function(novo){
+          $scope.nome = $scope.nome + 'W';
+          console.log(novo);
+        });
+    }]);
+
+    /*
+    angular
+      .module('loop', [])
+      .controller('LoopController', ['$scope', function($scope){
+        var vm = this;
+        $scope.nome = 'Teste';
+        $scope.$watch('nome', function(novo, velho){
+          console.log(novo);
+          console.log(velho);
+        });
+    }]);
+*/
+  </script>
+</html>

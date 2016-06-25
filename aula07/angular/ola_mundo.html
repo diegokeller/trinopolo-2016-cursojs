@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="olaApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Olá Mundo Angular</title>
+    <script src="angular.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="OlaController as olaCtrl">
+    <input type="number" ng-model="olaCtrl.numero1">
+    +
+    <input type="number" ng-model="olaCtrl.numero2">
+    =
+    {{olaCtrl.numero1 + olaCtrl.numero2}}
+    <span ng-bind="olaCtrl.nome">
+    </span>
+    <script type="text/javascript">
+      angular
+        .module('olaApp', [])
+        .controller('OlaController', ['$scope', function($scope){
+          var vm = this;
+          vm.numero1 = 5;
+          vm.numero2 = 7;
+          vm.nome = 'TrinoPolo';
+        }]);
+    </script>
+  </body>
+</html>

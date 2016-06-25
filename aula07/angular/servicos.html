@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="servicos">
+  <head>
+    <meta charset="utf-8">
+    <title>Serviços</title>
+    <script src="angular.js" charset="utf-8"></script>
+  </head>
+  <body ng-controller="ServicosController as servicosCtrl">
+    <h1>Produto</h1>
+    <h2 ng-bind="servicosCtrl.produto.nome"></h2>
+    <img src="{{servicosCtrl.produto.urlFoto}}" />
+    <p ng-bind="servicosCtrl.produto.descricao"></p>
+  </body>
+  <script type="text/javascript">
+    angular
+      .module('servicos', [])
+      .controller('ServicosController',
+        ['$http', '$location', '$timeout', '$window',
+        function($http, $location, $timeout, $window){
+        var vm = this;
+
+        vm.produto = {};
+
+        // Aguarda 1,5 segundos
+        $timeout(function(){
+
+          var url = 'http://lojawebrest-adrianomargarin.rhcloud.com/rest/produto/1';
+
+          $http.get(url)
+            .then(function(resposta){
+              vm.produto = resposta.data;
+            });
+
+        }, 1500);
+      }]);
+  </script>
+</html>

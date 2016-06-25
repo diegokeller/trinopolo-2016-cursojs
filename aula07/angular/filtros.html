@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="filtros">
+  <head>
+    <meta charset="utf-8">
+    <title>Filtros</title>
+    <script src="angular.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div ng-controller="FiltrosController as filtrosCtrl">
+      <p>
+        Hoje é dia {{filtrosCtrl.data | date: 'dd/MM/yyyy'}}
+      </p>
+      <p>
+        Preço do produto: {{filtrosCtrl.preco | currency}}
+      </p>
+      <p>
+        Instituição: {{filtrosCtrl.nome | uppercase}}
+      </p>
+      <p>
+        Descrição:
+        {{filtrosCtrl.descricao | limitTo: 20}} ...
+      </p>
+    </div>
+    <script type="text/javascript">
+      angular
+        .module('filtros', [])
+        .controller('FiltrosController', [function(){
+          var vm = this;
+          vm.data = new Date();
+          vm.preco = 123.56;
+          vm.nome = 'ftec';
+          vm.descricao = 'Curso de JS jQuery' +
+            ' Angular TrinoPolo';
+        }]);
+    </script>
+  </body>
+</html>

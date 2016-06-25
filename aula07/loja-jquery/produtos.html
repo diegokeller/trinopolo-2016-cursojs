@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
+    <title>Produtos</title>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var url = 'http://localhost:8090/loja-web-rest/rest/produtos';
+        $.getJSON(url, function(produtos){
+          // Percorre os produtos
+          for (produto of produtos) {
+            $('#produtos').append(
+              '<li><a onclick="detalhe(this)" data-id="' + produto.id + '" href="#">' +
+              produto.nome +
+              '</a></li>');
+          }
+          mostrarProduto(produtos[0]);
+        });
+      });
+      function detalhe(link){
+        var id = $(link).data('id');
+
+        var url = 'http://localhost:8090/' +
+        'loja-web-rest/rest/produtosss/' + id;
+
+        // Usando a função de AJAX do jQuery
+        $.ajax({
+          url: url,
+          success: function(produto){
+            mostrarProduto(produto);
+          },
+          error: function(){
+            alert('Erro ao buscar produto.');
+          }
+        });
+      }
+      function mostrarProduto(produto){
+        $('#nome').html(produto.nome);
+        $('#foto').attr('src', produto.urlFoto);
+        $('#descricao').html(produto.descricao);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>Lista de Produtos</h1>
+        <ul id="produtos">
+
+        </ul>
+      </div>
+      <div class="col-lg-6" id="detalhe">
+        <h1>Detalhes do Produto</h1>
+        <h2 id="nome"></h2>
+        <img id="foto" src="" style="width: 400px;" />
+        <div id="descricao">
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
