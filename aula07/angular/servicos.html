@@ -24,12 +24,18 @@
         // Aguarda 1,5 segundos
         $timeout(function(){
 
-          var url = 'http://lojawebrest-adrianomargarin.rhcloud.com/rest/produto/1';
+          var url = 'http://lojawebrest-diegokeller.rhcloud.com/rest/produto/1';
 
           $http.get(url)
             .then(function(resposta){
               vm.produto = resposta.data;
+            })
+            .catch(function(resposta){
+              console.log('Erro ao buscar.');
+              console.log(resposta);
             });
+
+          console.log('Depois');
 
         }, 1500);
       }]);

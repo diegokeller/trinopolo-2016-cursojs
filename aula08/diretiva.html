@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="diretivas">
+  <head>
+    <meta charset="utf-8">
+    <title>Diretivas</title>
+    <script src="angular.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body ng-controller="DiretivaController as dirCtrl">
+    <detalhe-produto produto="dirCtrl.produto" nome="{{dirCtrl.nome}}">
+    </detalhe-produto>
+  </body>
+  <script type="text/javascript">
+    angular
+      .module('diretivas', [])
+      .directive('detalheProduto', [function(){
+        var directive = {
+          restrict: 'E',
+          templateUrl: 'detalhe-produto.html',
+          scope: {
+            produto: '=produto',
+            nome: '@nome'
+          }
+        };
+        return directive;
+
+      }])
+      .controller('DiretivaController', ['$http', function($http){
+        var url = 'http://lojawebrest-diegokeller' +
+          '.rhcloud.com/rest/produto/1';
+        var vm = this;
+        vm.produto = {};
+        vm.nome = 'Teste 2';
+        $http.get(url)
+          .then(function(resposta){
+            vm.produto = resposta.data;
+          })
+          .catch(function(){
+            console.log('Erro ao buscar produto.');
+          });
+      }]);
+  </script>
+</html>

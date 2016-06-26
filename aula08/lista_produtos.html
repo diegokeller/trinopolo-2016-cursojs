@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="produtos">
+  <head>
+    <meta charset="utf-8">
+    <title>Lista de Produtos</title>
+    <script src="angular.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body ng-controller="ProdutosController as prodCtrl">
+    <ng-include src="'bem_vindo.html'"></ng-include>
+    <div class="row">
+      <div class="col-md-6">
+        <span ng-hide="prodCtrl.temProdutos">
+          Sem produtos no momento
+        </span>
+        <table class="table" ng-show="prodCtrl.temProdutos">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="produto in prodCtrl.produtos | orderBy: '-preco'">
+              <td>
+                <a href="#"
+                  ng-click="prodCtrl.mostrarProduto(produto)">
+                  {{produto.nome}}
+                </a>
+              </td>
+              <td><span ng-bind="produto.preco | currency"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-6">
+        <h1>{{prodCtrl.produto.nome}}</h1>
+        <h2>{{prodCtrl.produto.preco}}</h2>
+        <div class="">
+          <img src="{{prodCtrl.produto.urlFoto}}" style="width: 400px;" />
+        </div>
+        <div>
+          {{prodCtrl.produto.descricao}}
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script type="text/javascript">
+    angular
+      .module('produtos', [])
+      .controller('ProdutosController', ['$http', function($http){
+        var vm = this;
+
+        // Variáveis
+        vm.produtos = [];
+        vm.temProdutos = vm.produtos.length > 0;
+        vm.produto = {};
+
+        // Métodos
+        vm.mostrarProduto = mostrarProduto;
+
+        // Busca os produtos
+        var url = 'http://lojawebrest-diegokeller.rhcloud.com/rest/produtos';
+        $http.get(url)
+          .then(function(resposta){
+            vm.produtos = resposta.data;
+            vm.temProdutos = true;
+          })
+          .catch(function(resposta){
+            console.log('Erro ao buscar produtos.');
+            console.log(resposta);
+            vm.produtos = [];
+            vm.temProdutos = false;
+          });
+
+          // Privada
+          function mostrarProduto(produto){
+            vm.produto = produto;
+          }
+      }]);
+  </script>
+</html>
