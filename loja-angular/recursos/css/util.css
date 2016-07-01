@@ -1,0 +1,21 @@
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.negrito {
+  font-weight: bold;
+}
+
+.sem-nota {
+  color: silver;
+}
+
+.linha-carrinho {
+  padding-top: 16px !important;
+}
+
+.navbar-inverse {
+    background-color: #111e44 !important;
+    border-color: #ffffff !important;
+}
