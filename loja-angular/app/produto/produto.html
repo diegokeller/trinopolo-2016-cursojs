@@ -7,14 +7,14 @@
   <div class="col-md-9">
 
     <div class="thumbnail">
-      <img class="img-responsive" src="" alt="">
+      <img class="img-responsive" ng-src="{{vmProduto.produto.urlFoto}}" alt="">
       <div class="caption-full">
-        <h4 class="pull-right">R$ 123,45</h4>
-        <h4>Teste</h4> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <h4 class="pull-right">{{vmProduto.produto.preco | currency}}</h4>
+        <h4>{{vmProduto.produto.nome}}</h4>
+        {{vmProduto.produto.descricao}}
       </div>
       <div class="ratings">
-        <span class="pull-right">5
+        <span class="pull-right">{{vmProduto.produto.avaliacoes}}
               <span>avaliações</span>
         </span>
         <span>
@@ -61,24 +61,24 @@
       <hr>
 
       <div class="row">
-        <div class="col-md-12">
+        <div ng-repeat="avaliacao in vmProduto.avaliacoes" class="col-md-12">
           <span class="pull-left">
-                  <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star"></span>
           <span class="glyphicon glyphicon-star"></span>
           </span>
           <span class="pull-left" style="padding-left: 10px;">
-                          <strong>Teste</strong>
+                          <strong>{{avaliacao.titulo}}</strong>
                         </span>
           <span class="pull-right">
-                          por João em 10/10/2000
+                          por {{avaliacao.usuario.nome}} em
+                          {{avaliacao.data | date: 'dd/MM/yyyy HH:mm:ss'}}
                         </span>
           <div class="clearfix">
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-            irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>{{avaliacao.descricao}}</p>
           <hr>
         </div>
       </div>
