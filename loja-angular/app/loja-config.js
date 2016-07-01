@@ -4,11 +4,16 @@ angular
   .config(['$locationProvider', '$routeProvider', '$httpProvider',
     function config($locationProvider, $routeProvider, $httpProvider) {
       $locationProvider.hashPrefix('!');
-      $routeProvider.
-        when('/produtos', {
+      $routeProvider
+        .when('/produtos', {
           templateUrl : "app/produto/produtos.html",
           controller: 'ProdutosController',
           controllerAs: 'vmProdutos'
+        })
+        .when('/produto/:id', {
+          templateUrl : "app/produto/produto.html",
+          controller: 'ProdutoController',
+          controllerAs: 'vmProduto'
         });
     }
   ]);
