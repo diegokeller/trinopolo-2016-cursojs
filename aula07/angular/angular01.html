@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="angular.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="">
+      <input type="text" ng-model="nomePessoa">
+      <span>
+        {{nomePessoa}}
+      </span>
+    </div>
+    <div class="" ng-controller="HomeController as homeCtrl">
+      <h1>{{homeCtrl.titulo}}</h1>
+      <ul>
+        <li ng-repeat="produto in homeCtrl.produtos">
+          {{produto.nome}} - {{produto.preco}}
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script type="text/javascript">
+    angular
+      .module('app', [])
+      .controller('HomeController', HomeController);
+
+    HomeController.$inject = ['$http', '$window', '$timeout'];
+
+    function HomeController($http, $window, $timeout){
+
+      var vm = this;
+
+      vm.produtos = [];
+      vm.titulo = 'Lista de Produtos!!!!!';
+
+      var url = 'http://loja-rest.jelastic.websolute.net.br/loja-web-rest/rest/produtos';
+      $http.get(url)
+        .then(function(response){
+          vm.produtos = response.data;
+          vm.titulo = 'Lista de Produtos: ' + vm.produtos.length + ' itens';
+        })
+        .catch(function(response){
+          vm.titulo = 'Erro ao buscar produtos';
+        });
+
+    }
+  </script>
+</html>
