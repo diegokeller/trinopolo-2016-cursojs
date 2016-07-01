@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="lojaApp">
 
 <!--Cor da barra do navegador em dispositivos móveis-->
 <meta name="theme-color" content="#111e44">
@@ -38,6 +38,8 @@
 
   <!--App-->
   <script src="recursos/js/util.js"></script>
+  <script src="app/loja-modulos.js"></script>
+  <script src="app/loja-config.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -94,7 +96,11 @@
   <!-- Page Content -->
   <div class="container">
 
-    <div>Bem Vindo!</div>
+    <!--Indica ao Angular que o conteúdo da página deve
+    ser inserido aqui dentro-->
+    <div ng-view>
+
+    </div>
 
     <!-- Footer -->
     <footer>
