@@ -29,27 +29,28 @@
         <div class="form-group">
           <label for="nota">Nota</label>
           <label>
-            <input type="radio" name="nota" value="1">1</label>
+            <input ng-model="vmProduto.avaliacao.nota" type="radio" name="nota" value="1">1</label>
           <label>
-            <input type="radio" name="nota" value="2">2</label>
+            <input ng-model="vmProduto.avaliacao.nota" type="radio" name="nota" value="2">2</label>
           <label>
-            <input type="radio" name="nota" value="3">3</label>
+            <input ng-model="vmProduto.avaliacao.nota" type="radio" name="nota" value="3">3</label>
           <label>
-            <input type="radio" name="nota" value="4">4</label>
+            <input ng-model="vmProduto.avaliacao.nota" type="radio" name="nota" value="4">4</label>
           <label>
-            <input type="radio" name="nota" value="5">5</label>
+            <input ng-model="vmProduto.avaliacao.nota" type="radio" name="nota" value="5">5</label>
         </div>
         <div class="form-group">
           <label for="titulo">Título</label>
-          <input type="text" name="titulo" value="" class="form-control">
+          <input ng-model="vmProduto.avaliacao.titulo" type="text" name="titulo" value="" class="form-control">
         </div>
         <div class="form-group">
           <label for="descricao">Descrição</label>
-          <textarea name="descricao" value="" class="form-control"></textarea>
+          <textarea ng-model="vmProduto.avaliacao.descricao" name="descricao" value="" class="form-control"></textarea>
         </div>
       </form>
       <div class="text-right">
-        <a class="btn btn-primary">Enviar avaliação</a>
+        <a class="btn btn-primary"
+          ng-click="vmProduto.enviarAvaliacao()">Enviar avaliação</a>
       </div>
 
       <hr>
@@ -57,11 +58,8 @@
       <div class="row">
         <div ng-repeat="avaliacao in vmProduto.avaliacoes" class="col-md-12">
           <span class="pull-left">
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
+            <avaliacoes-produto nota="{{avaliacao.nota}}">
+            </avaliacoes-produto>
           </span>
           <span class="pull-left" style="padding-left: 10px;">
             <strong>{{avaliacao.titulo}}</strong>

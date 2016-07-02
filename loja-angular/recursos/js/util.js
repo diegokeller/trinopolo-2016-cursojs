@@ -3,7 +3,7 @@ function notificar(mensagem, tipo){
     tipo = 'info';
   }
   $.notify(mensagem, {
-    position: isMobile() ? "bottom left" : "bottom right",
+    position: isMobile() ? "bottom left" : "top right",
     className: tipo
   });
 }
