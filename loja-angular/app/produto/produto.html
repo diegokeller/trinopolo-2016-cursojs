@@ -1,29 +1,23 @@
 <div class="row">
 
-  <div class="col-md-3" loja-categorias>
-
-  </div>
+  <div class="col-md-3" loja-categorias></div>
 
   <div class="col-md-9">
 
     <div class="thumbnail">
-      <img class="img-responsive" ng-src="{{vmProduto.produto.urlFoto}}" alt="">
+      <img class="img-responsive" style="width: 400px;" ng-src="{{vmProduto.produto.urlFoto}}" alt="">
       <div class="caption-full">
         <h4 class="pull-right">{{vmProduto.produto.preco | currency}}</h4>
         <h4>{{vmProduto.produto.nome}}</h4>
         {{vmProduto.produto.descricao}}
       </div>
       <div class="ratings">
-        <span class="pull-right">{{vmProduto.produto.avaliacoes}}
-              <span>avaliações</span>
-        </span>
-        <span>
-              <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        </span>
+        <!-- <teste-avaliacoes avaliacoes="{{vmProduto.produto.avaliacoes}}" nota="{{vmProduto.produto.nota}}">
+        </teste-avaliacoes> -->
+        <avaliacoes-produto
+          avaliacoes="{{vmProduto.produto.avaliacoes}}"
+          nota="{{vmProduto.produto.nota}}">
+        </avaliacoes-produto>
       </div>
       <div class="text-center" style="margin: 10px;">
         <a class="btn btn-success">Adicionar ao carrinho</a>
@@ -63,21 +57,22 @@
       <div class="row">
         <div ng-repeat="avaliacao in vmProduto.avaliacoes" class="col-md-12">
           <span class="pull-left">
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
           </span>
           <span class="pull-left" style="padding-left: 10px;">
-                          <strong>{{avaliacao.titulo}}</strong>
-                        </span>
+            <strong>{{avaliacao.titulo}}</strong>
+          </span>
           <span class="pull-right">
-                          por {{avaliacao.usuario.nome}} em
-                          {{avaliacao.data | date: 'dd/MM/yyyy HH:mm:ss'}}
-                        </span>
-          <div class="clearfix">
-          </div>
+            por
+            {{avaliacao.usuario.nome}}
+            em
+            {{avaliacao.data | date: 'dd/MM/yyyy HH:mm:ss'}}
+          </span>
+          <div class="clearfix"></div>
           <p>{{avaliacao.descricao}}</p>
           <hr>
         </div>

@@ -9,25 +9,17 @@
   </div>
 
   <div class="col-md-9">
-
     <div class="row carousel-holder">
-
-      <div class="col-md-12" loja-banners>
-      </div>
-
+      <div class="col-md-12" loja-banners></div>
     </div>
-
     <div class="row">
-
       <div class="col-lg-12">
         Ordenar por:
         <label style="margin: 5px;">
-          <input ng-model="vmProdutos.ordem" type="radio"
-            name="ordenacao" value="nome">Nome
+          <input ng-model="vmProdutos.ordem" type="radio" name="ordenacao" value="nome">Nome
         </label>
         <label style="margin: 5px;">
-          <input ng-model="vmProdutos.ordem" type="radio"
-            name="ordenacao" value="preco">Preço
+          <input ng-model="vmProdutos.ordem" type="radio" name="ordenacao" value="preco">Preço
         </label>
       </div>
 
@@ -43,22 +35,25 @@
               {{produto.preco | currency}}
             </h5>
             <h5>
-              <a href="#!/produto/{{produto.id}}">{{produto.nome}}</a>
+              <a href="#">{{produto.nome}}</a>
             </h5>
             <p>
-              {{produto.descricao | limitTo: 90}} ...
+              {{produto.descricao | limitTo: 90}}
+              ...
             </p>
           </div>
           <div class="ratings">
+            <!-- <teste-avaliacoes avaliacoes="{{produto.avaliacoes}}" nota="{{produto.nota}}">
+            </teste-avaliacoes> -->
             <span class="pull-right">5
-                            <span>avaliações</span>
+              <span>avaliações</span>
             </span>
             <span>
-                            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="glyphicon glyphicon-star"></span>
             </span>
           </div>
         </div>

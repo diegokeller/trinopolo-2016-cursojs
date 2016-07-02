@@ -1,0 +1,11 @@
+<span ng-if="avaliacoes !== undefined" class="pull-right">{{avaliacoes}}
+  <span ng-show="avaliacoes == 1">avaliação</span>
+  <span ng-show="avaliacoes != 1">avaliações</span>
+</span>
+<span>
+  <span ng-class="{'sem-nota': nota < 1}" class="glyphicon glyphicon-star"></span>
+  <span ng-class="{'sem-nota': nota < 2}" class="glyphicon glyphicon-star"></span>
+  <span ng-class="{'sem-nota': nota < 3}" class="glyphicon glyphicon-star"></span>
+  <span ng-class="{'sem-nota': nota < 4}" class="glyphicon glyphicon-star"></span>
+  <span ng-class="{'sem-nota': nota < 5}" class="glyphicon glyphicon-star"></span>
+</span>
