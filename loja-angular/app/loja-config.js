@@ -15,6 +15,11 @@ angular
           templateUrl : "app/produto/produto.html",
           controller: 'ProdutoController',
           controllerAs: 'vmProduto'
+        })
+        .when('/carrinho', {
+          templateUrl : "app/carrinho/carrinho.html",
+          controller: 'CarrinhoController',
+          controllerAs: 'vmCarrinho'
         });
     }
   ]);

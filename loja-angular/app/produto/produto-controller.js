@@ -2,19 +2,32 @@ angular
   .module('lojaApp.produto')
   .controller('ProdutoController', ProdutoController);
 
-ProdutoController.$inject = ['$http', '$routeParams', 'ProdutoFactory'];
+ProdutoController.$inject = ['$http', '$routeParams',
+  'ProdutoFactory', 'CarrinhoFactory'];
 
-function ProdutoController($http, $routeParams, ProdutoFactory){
+function ProdutoController($http, $routeParams,
+    ProdutoFactory, CarrinhoFactory){
   var vm = this;
 
   vm.produto = {};
   vm.avaliacoes = [];
   vm.avaliacao = {};
   vm.enviarAvaliacao = enviarAvaliacao;
+  vm.adicionarAoCarrinho = adicionarAoCarrinho;
 
   buscarAvaliacoes();
 
   //=======================================================
+
+  function adicionarAoCarrinho(){
+    CarrinhoFactory.adicionarAoCarrinho($routeParams.id, 1, 1)
+      .then(function(resposta){
+        notificar('Adicionado ao carrinho com sucesso', 'success');
+      })
+      .catch(function(resposta){
+        notificar(respota.data.error, 'error');
+      });
+  }
 
   function buscarAvaliacoes(){
     ProdutoFactory.buscarAvaliacoesDoProduto($routeParams.id)

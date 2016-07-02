@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h4>Carrinho de compras</h4>
+    <table ng-show="vmCarrinho.itens.length > 0" class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Foto</th>
+          <th>Produto</th>
+          <th>Preço Unitário</th>
+          <th>Quantidade</th>
+          <th>
+            <span class="pull-right">
+              Total
+            </span>
+          </th>
+          <th>
+            Remover
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in vmCarrinho.itens">
+          <td class="linha-carrinho" scope="row">
+            {{$index + 1}}
+          </td>
+          <td>
+            <img ng-src="{{item.produto.urlFoto}}" style="height: 35px;"/>
+          </td>
+          <td class="linha-carrinho">
+            <a href="#">
+              {{item.produto.nome}}
+            </a>
+          </td>
+          <td class="linha-carrinho">{{item.produto.preco | currency}}</td>
+          <td class="">
+            <button ng-click="vmCarrinho.atualizarQuantidade(item, -1)"
+              type="button" class="btn btn-default">
+              <span style="cursor: pointer; font-size: 16px; padding-top: 5px;" title="Diminuir quantidade" class="glyphicon glyphicon-minus-sign text-info"
+                aria-hidden="true"></span>
+            </button>
+            <span style="margin: 0px 5px 0px 5px;">
+              {{item.quantidade}}
+            </span>
+            <button ng-click="vmCarrinho.atualizarQuantidade(item, 1)"
+              type="button" class="btn btn-default">
+              <span style="cursor: pointer; font-size: 16px; padding-top: 5px;" title="Aumentar quantidade" class="glyphicon glyphicon-plus-sign text-info" aria-hidden="true"></span>
+            </button>
+          </td>
+          <td class="linha-carrinho">
+            <span class="pull-right item-carrinho">
+              {{item.produto.preco * item.quantidade | currency}}
+            </span>
+          </td>
+          <td class="linha-carrinho">
+            <span ng-click="vmCarrinho.remover(item.id)"
+              style="cursor: pointer; font-size: 20px;"
+              title="Remover do carrinho"
+              class="glyphicon glyphicon-remove text-danger item-carrinho"
+              aria-hidden="true"></span>
+          </td>
+        </tr>
+        <tr class="info">
+          <td>
+            <strong>TOTAL</strong>
+          </td>
+          <td colspan="5">
+            <span class="pull-right">
+              <strong>{{vmCarrinho.total | currency}}</strong>
+            </span>
+          </td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="pull-right">
+      <button type="button" class="btn btn-primary">Salvar</button>
+      <button type="button" class="btn btn-success">Confimar e enviar</button>
+    </div>
+  </div>
+</div>
